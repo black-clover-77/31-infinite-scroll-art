@@ -1,0 +1,114 @@
+:root {
+  --bg: #000;
+  --text: #fff;
+  --accent: #ff0055;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100vw;
+  position: relative;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding: 100px 20px;
+}
+
+.art-item {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 500px;
+}
+
+.art-img {
+  width: 100%;
+  height: 120%; /* For parallax */
+  object-fit: cover;
+  position: absolute;
+  top: -10%;
+  left: 0;
+  filter: grayscale(1) contrast(1.2);
+  transition: 0.5s;
+}
+
+.art-item:hover .art-img {
+  filter: grayscale(0) contrast(1);
+  transform: scale(1.05);
+}
+
+.art-info {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  z-index: 10;
+  mix-blend-mode: difference;
+}
+
+.art-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+.art-year {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-top: 10px;
+}
+
+#audio-toggle {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-badge {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  font-size: 0.7rem;
+  opacity: 0.5;
+  z-index: 100;
+}
+
+.github-badge a { color: #fff; text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .art-item { height: 300px; }
+  .art-title { font-size: 2rem; }
+}
